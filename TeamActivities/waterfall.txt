@@ -1,0 +1,26 @@
+= Team Activity =
+Create a waterfall model for making cookies at a bake sale
+
+Communication:
+    Team meeting discussing cookie types/quantities/logistics of baking and
+    sales
+    
+Planning:
+    * Figure out how many of each type of cookie we need make to inform ingredient
+    purchasing.
+    * When we should make them to ensure freshness.
+    * Figure out cost per cookie to inform pricing.
+
+Modeling:
+    * TODO
+
+Construction:
+    * Baking
+    * Packaging
+    * Creating Advertisements/signs
+
+Deployment:
+    * Transporting goods to location(s)
+    * Placing sellers on location
+    * Placing feedback box
+ 
