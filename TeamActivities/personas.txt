@@ -1,0 +1,19 @@
+"The Stoner"
+Goals:
+    * Getting "snackable" food quickly
+    * Must be available at any time
+Roles:
+    * Purchasing snacks for themselves and friends
+Needs:
+    * Needs to be centrally located/nearby/accessible
+    * Needs to be afforable
+
+"The Supporter"
+Goals:
+    * Giving money to the bake sale to support their goal
+    * Interact with the 'face' of the organization
+Roles:
+    * Support the sellers
+Needs:
+    * Have option to support without exchange of product
+    * Have option to overpay for product
