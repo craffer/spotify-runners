@@ -3,7 +3,7 @@ import sys
 import spotipy  # pylint: disable=import-error
 
 # this sets the scope for our user access token to allow us to view their saved tracks
-SCOPE = "user-library-read"
+SCOPE = "user-library-read playlist-modify-public"
 
 
 def main():
@@ -36,11 +36,23 @@ def main():
         for id_group in ids:
             features_list.append(sp.audio_features(id_group))
 
+        print("Finding songs that match your BPM...")
+        bpm_matches = []
         for lst in features_list:
             for track in lst:
                 # if this is within 5 of our desired BPM on either side, we grab it
                 if -5 <= track["tempo"] - desired_bpm <= 5:
-                    print(f"Spotify track URI: {track['uri']}\nBPM: {track['tempo']}\n")
+                    bpm_matches.append(track["uri"])
+        if bpm_matches:
+            print("Creating a playlist for all the songs we've found!")
+            new_playlist = sp.user_playlist_create(username, "Spotify Running")
+            bpm_chunks = [
+                bpm_matches[x : x + 100] for x in range(0, len(bpm_matches), 100)
+            ]
+            for chunk in bpm_chunks:
+                sp.user_playlist_add_tracks(username, new_playlist["id"], chunk)
+            print("All done! Check out your new Spotify Running playlist.")
+
     else:
         print("Can't get token for", username)
 
