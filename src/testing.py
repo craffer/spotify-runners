@@ -18,11 +18,23 @@ def main():
 
     if token:
         sp = spotipy.Spotify(auth=token)
-        results = sp.current_user_saved_tracks(limit=50)
-        ids = [item["track"]["id"] for item in results["items"]]
-        audio_features = sp.audio_features(ids)
-        for track in audio_features:
-            print(f"Spotify track URI: {track['uri']}\nBPM: {track['tempo']}\n")
+
+        # get the IDs of all saved tracks for the logged in user
+        ids = []
+        current_results = sp.current_user_saved_tracks(limit=50)
+        while current_results:
+            current_results = sp.next(current_results)
+            if current_results:
+                ids.append([item["track"]["id"] for item in current_results["items"]])
+
+        # get the audio features (including BPM) for each saved track
+        features_list = []
+        for id_group in ids:
+            features_list.append(sp.audio_features(id_group))
+
+        for lst in features_list:
+            for track in lst:
+                print(f"Spotify track URI: {track['uri']}\nBPM: {track['tempo']}\n")
     else:
         print("Can't get token for", username)
 
