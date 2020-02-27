@@ -14,12 +14,16 @@ def main():
         print("Usage: %s username" % (sys.argv[0],))
         sys.exit()
 
+    print("Welcome to Spotify Running! Please log in using your browser.")
     token = spotipy.util.prompt_for_user_token(username, SCOPE)
 
     if token:
         sp = spotipy.Spotify(auth=token)
 
+        desired_bpm = int(input("Please enter your desired BPM: "))
+
         # get the IDs of all saved tracks for the logged in user
+        print("Analyzing your library...")
         ids = []
         current_results = sp.current_user_saved_tracks(limit=50)
         while current_results:
@@ -34,7 +38,9 @@ def main():
 
         for lst in features_list:
             for track in lst:
-                print(f"Spotify track URI: {track['uri']}\nBPM: {track['tempo']}\n")
+                # if this is within 5 of our desired BPM on either side, we grab it
+                if -5 <= track["tempo"] - desired_bpm <= 5:
+                    print(f"Spotify track URI: {track['uri']}\nBPM: {track['tempo']}\n")
     else:
         print("Can't get token for", username)
 
