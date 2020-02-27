@@ -1,0 +1,8 @@
+# python
+env/
+
+# direnv
+.envrc
+
+# other
+.cache*
