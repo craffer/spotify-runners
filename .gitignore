@@ -3,3 +3,6 @@ env/
 
 # direnv
 .envrc
+
+# other
+.cache*
