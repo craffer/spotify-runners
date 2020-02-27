@@ -52,6 +52,8 @@ def main():
             for chunk in bpm_chunks:
                 sp.user_playlist_add_tracks(username, new_playlist["id"], chunk)
             print("All done! Check out your new Spotify Running playlist.")
+        else:
+            print("No songs match. Sorry :/")
 
     else:
         print("Can't get token for", username)
