@@ -18,5 +18,6 @@ setup(
         "pylint==2.4.1",
         "pytest==5.2.0",
         "requests==2.22.0",
+        "spotipy==2.9.0",
     ],
 )

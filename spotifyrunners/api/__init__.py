@@ -1,3 +1,3 @@
 """spotify-runners REST API."""
 
-# TODO import api functions
+from spotifyrunners.api.api import get_tracks
