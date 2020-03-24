@@ -5,5 +5,5 @@
 set -Eeuo pipefail
 
 export FLASK_DEBUG=True
-export FASK_APP=spotifyrunners
+export FLASK_APP=spotifyrunners
 flask run --host 0.0.0.0 --port 8000
