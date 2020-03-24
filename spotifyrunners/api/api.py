@@ -56,7 +56,9 @@ def get_tracks():
                         bpm_matches.append(track["uri"])
             if bpm_matches:
                 print("Creating a playlist for all the songs we've found!")
-                new_playlist = sp.user_playlist_create(username, "Spotify Running")
+                new_playlist = sp.user_playlist_create(
+                    username, f"Spotify Running at {bpm} BPM"
+                )
                 bpm_chunks = [
                     bpm_matches[x : x + 100] for x in range(0, len(bpm_matches), 100)
                 ]
