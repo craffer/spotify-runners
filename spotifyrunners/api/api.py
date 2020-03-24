@@ -11,10 +11,7 @@ SCOPE = "user-library-read playlist-modify-public"
 
 @spotifyrunners.app.route("/api/v1/", methods=["GET"])
 def get_tracks():
-    """
-    Return up to 50 tracks from users library that match a given bpm +/-
-    5 bpm.
-    """
+    """Return up to 50 tracks from users library that match a given bpm +/- 5 bpm."""
     username = flask.request.args.get(
         "username", default="d109pti75pqyij348fp3v3ho9", type=str
     )
