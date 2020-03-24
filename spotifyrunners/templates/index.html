@@ -8,36 +8,23 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
   </head>
   <body>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>Spotify Runners</h1>
         <p class="p-2">We make it easy to play your favorite music to keep you going on your run, without distracting you or throwing you off your pace. To get started, just enter a desired BPM and click the button below, and we'll create a playlist of your favorite songs that match it.</p>
-
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select a BPM
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">120</a>
-              <a class="dropdown-item" href="#">125</a>
-              <a class="dropdown-item" href="#">130</a>
-              <a class="dropdown-item" href="#">135</a>
-              <a class="dropdown-item" href="#">140</a>
-              <a class="dropdown-item" href="#">145</a>
-              <a class="dropdown-item" href="#">150</a>
-              <a class="dropdown-item" href="#">155</a>
-              <a class="dropdown-item" href="#">160</a>
-              <a class="dropdown-item" href="#">165</a>
-              <a class="dropdown-item" href="#">170</a>
-              <a class="dropdown-item" href="#">175</a>
-              <a class="dropdown-item" href="#">180</a>
-              <a class="dropdown-item" href="#">185</a>
-              <a class="dropdown-item" href="#">190</a>
+        <form action="/api/v1/create" method="post">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" class="form-control" id="usernameBox" name="username">
             </div>
-          </div>
-        <button type="button" class="btn btn-primary btn-lg btn-green m-3 mb-5">Get Started</button>
+            <div class="form-group">
+              <label for="bpmBox">Desired BPM</label>
+              <input type="number" class="form-control" id="bpmBox" name="bpm">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-green mb-5" formmethod="post">Get Started</button>
+          </form>
 
         <h4>How it works</h4>
         <p class="p-2">Our app looks at your favorite songs from your Spotify library and analyzes each one to determine its BPM, or Beats Per Minute. If a song's tempo matches your running pace, it won't distract you and can help you keep pushing.</p>
@@ -45,8 +32,5 @@
         <h4>What to Select</h4>
         <p class="p-2">To figure out what cadence you run at, TODO.</p>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
