@@ -1,8 +1,11 @@
 # python
 env/
+__pycache__/
 
 # direnv
 .envrc
 
 # other
 .cache*
+.vscode/
+*.egg-info/
