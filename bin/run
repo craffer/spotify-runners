@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Warning: I'm not sure if this works
-
 set -Eeuo pipefail
 
 # set flask environment variables
