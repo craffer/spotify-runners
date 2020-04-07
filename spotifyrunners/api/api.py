@@ -14,13 +14,13 @@ def get_tracks():
     """Return up to 50 tracks from users library that match a given bpm +/- 5 bpm."""
     context = {}
     if flask.request.method == "POST":
-        request_info = flask.request.get_json()
+        request_info = flask.request.form
         username = (
             request_info["username"]
             if "username" in request_info
             else "d109pti75pqyij348fp3v3ho9"
         )
-        bpm = request_info["bpm"] if "bpm" in request_info else 125
+        bpm = int(request_info["bpm"]) if "bpm" in request_info else 125
 
         print("Welcome to Spotify Running! Please log in using your browser.")
         token = spotipy.util.prompt_for_user_token(username, SCOPE)
@@ -56,7 +56,9 @@ def get_tracks():
                         bpm_matches.append(track["uri"])
             if bpm_matches:
                 print("Creating a playlist for all the songs we've found!")
-                new_playlist = sp.user_playlist_create(username, "Spotify Running")
+                new_playlist = sp.user_playlist_create(
+                    username, f"Spotify Running at {bpm} BPM"
+                )
                 bpm_chunks = [
                     bpm_matches[x : x + 100] for x in range(0, len(bpm_matches), 100)
                 ]

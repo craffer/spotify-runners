@@ -11,3 +11,4 @@ You need a Spotify API key to run this app on your machine. The code is set up u
 ### Gantt Chart
 
 ![Project Gantt Chart](https://user-images.githubusercontent.com/33812024/73892491-1c1fa280-4845-11ea-9f4d-590299df3c2d.png "Project Gantt Chart")
+
