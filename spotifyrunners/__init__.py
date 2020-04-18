@@ -9,6 +9,7 @@ app.config.from_object("spotifyrunners.config")
 
 app.config.from_envvar("SPOTIFYRUNNERS_SETTINGS", silent=True)
 
+app.secret_key = b'_5#y2L"F4185\n\xec]/'
 # Tell our app about views and model.  This is dangerously close to a
 # circular import, which is naughty, but Flask was designed that way.
 # (Reference http://flask.pocoo.org/docs/patterns/packages/)  We're
