@@ -82,7 +82,6 @@ def get_tracks():
             rec_track_ids = [ recommendations['tracks'][index]['id'] for index in range(len(recommendations['tracks'])) ]
             # add recommended songs to the list
             bpm_matches.extend(rec_track_ids)
-            print(bpm_matches)
         # if we have songs, continue
         if bpm_matches:
             # added random shuffle to make the playlist look better since artists
