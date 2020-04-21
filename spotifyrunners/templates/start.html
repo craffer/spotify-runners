@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Spotify Runners</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  </head>
+  <body>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1>Spotify Runners</h1>
+        <p>Now, enter a BPM to match your running cadence below, and we'll find all your favorite songs that match it.</p>
+        <form action="/api/v1/create" method="post">
+            <div class="form-group">
+              <label for="bpmBox">Desired BPM</label>
+              <input type="number" class="form-control" id="bpmBox" name="bpm">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-green mb-5" formmethod="post">Get Started</button>
+          </form>
+
+        <h4>What to Select</h4>
+        <p class="p-2">Need help finding a BPM? Click the button below!</p>
+        <a href="/bpm" type="button" class="btn btn-primary btn-lg btn-green mb-5">Find my BPM</a>
+    </div>
+  </body>
+</html>

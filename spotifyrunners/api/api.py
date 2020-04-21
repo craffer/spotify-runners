@@ -39,6 +39,41 @@ SCOPE = "user-library-read user-top-read playlist-modify-public"
 SHOW_DIALOG = False
 
 
+@spotifyrunners.app.route("/api/v1/login", methods=["GET", "POST"])
+def login():
+    """Log a user in using Spotify."""
+    print("in login")
+    if flask.request.method == "POST":
+        # get data from form request
+        request_info = flask.request.form
+        username = request_info["username"]
+        print(username)
+        # save username in session
+        session["username"] = username
+        print(session)
+
+        # make sure the user is logged in
+        session["token_info"], authorized = get_token(session)
+        session.modified = True
+        # redirect to login if token not valid
+        # user can try submit another request once they have authenticated
+        if not authorized:
+            print("not authorized")
+            # Don't reuse a SpotifyOAuth object because they store token info
+            # and you could leak user tokens if you reuse a SpotifyOAuth object
+            sp_oauth = spotipy.oauth2.SpotifyOAuth(
+                client_id=CLIENT_ID,
+                client_secret=CLIENT_SECRET,
+                redirect_uri=REDIRECT_URI,
+                scope=SCOPE,
+                cache_path=CACHE + username,
+            )
+            auth_url = sp_oauth.get_authorize_url()
+            return redirect(auth_url)
+        else:
+            return flask.redirect(flask.url_for("show_start"))
+
+
 @spotifyrunners.app.route("/api/v1/create", methods=["GET", "POST"])
 def get_tracks():
     """Return up to 50 tracks from users library that match a given bpm +/- 5 bpm."""
@@ -46,9 +81,8 @@ def get_tracks():
     if flask.request.method == "POST":
         # get data from form request
         request_info = flask.request.form
-        username = request_info["username"]
-        # save username in session
-        session["username"] = username
+        print(session)
+        username = session["username"]
 
         # make sure the user is logged in
         session["token_info"], authorized = get_token(session)
@@ -175,7 +209,7 @@ def api_callback():
     # Saving the access token along with all other token related info
     session["token_info"] = token_info
 
-    return flask.redirect(flask.url_for("show_index"))
+    return flask.redirect(flask.url_for("show_start"))
 
 
 def get_token(session):
