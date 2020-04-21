@@ -195,7 +195,6 @@ def get_token(session):
 
     # Refreshing token if it has expired
     if is_token_expired:
-        return token_info, False
         # Don't reuse a SpotifyOAuth object because they store token
         # info and you could leak user tokens if you reuse a SpotifyOAuth object
         sp_oauth = spotipy.oauth2.SpotifyOAuth(
