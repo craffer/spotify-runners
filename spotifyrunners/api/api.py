@@ -1,19 +1,29 @@
 """REST API for spotify-runners."""
 import flask
-import spotipy
-from flask import jsonify
-import spotifyrunners
-import random
-from flask import Flask, render_template, redirect, request, session, make_response, redirect
-import spotipy.util as util
-import time
+from flask import Flask, jsonify, make_response, redirect, render_template, request, session
 import json
 import os
+import random
+import spotipy
+import spotifyrunners
+import spotipy.util as util
+import time
 
-# Make sure you add this to Redirect URIs in the setting of the application dashboard
+# The following are set up to get the REDIRECT_URI, CLIENT_ID, and, CLIENT_SECRET from
+# your environment variables. The hardcoded values commented below each variable are
+# the credentials from the developer account we created (USR: jshelata15951@gmail.com PWD: spotifyrunners)
+# https://developer.spotify.com/dashboard/
 REDIRECT_URI = os.getenv("SPOTIPY_REDIRECT_URI")
+#REDIRECT_URI = 'http://localhost:8000/api_callback'
+# If you want to access the site from a mobile device, change localhost above
+# to your local IP address on your home network and register the address with
+# our Spotify developer account (USR: jshelata15951@gmail.com PWD: spotifyrunners).
+# Once logged in our app is called spotify-runners-dev. Click on it, click edit settings,
+# and add your address to Redirect URIs
 CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
+#CLIENT_ID = '50074660d1ea4113bb817049604c3613'
 CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
+#CLIENT_SECRET = '68111ce410784a65a6173d3fe47c9f01'
 CACHE = ".cache-"
 # this sets the scope for our user access token to allow us to view their saved tracks
 SCOPE = "user-library-read user-top-read playlist-modify-public"
@@ -100,8 +110,11 @@ def get_tracks():
             playlist_id = new_playlist['uri'].split(':')[2]
             context = {"status": "created"}
         else:
+            # TODO: make an error page or display some better text
+            # probably not actually necessary for our full demo
             print("No songs match. Sorry :/")
             context = {"status": "no matches"}
+            return context
         return flask.redirect(flask.url_for("show_player", playlist_id=playlist_id))
     else:
         # if it's a GET request, just redirect them to the index page
@@ -133,7 +146,6 @@ def api_callback():
 
     # Saving the access token along with all other token related info
     session["token_info"] = token_info
-
 
     return flask.redirect(flask.url_for("show_index"))
 
