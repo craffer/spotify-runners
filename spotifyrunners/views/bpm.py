@@ -2,6 +2,7 @@
 import flask
 import spotifyrunners
 
+
 @spotifyrunners.app.route("/bpm")
 def show_bpm():
     """Display /bpm route."""
