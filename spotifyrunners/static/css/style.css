@@ -2,6 +2,13 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.text-align {
+    
+    text-align: center;
 }
 
 .btn-green {

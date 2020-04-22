@@ -13,18 +13,19 @@
   <body>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>Spotify Runners</h1>
-        <p>Now, enter a BPM to match your running cadence below, and we'll find all your favorite songs that match it.</p>
+        <h4>Need Help Finding BPM?</h4>
+        <a href="/bpm" type="button" class="btn btn-primary btn-lg btn-green mb-5">Find my BPM</a>
+        <h4>Enter BPM</h4>
+        <div class="text-align">
         <form action="/api/v1/create" method="post">
             <div class="form-group">
-              <label for="bpmBox">Desired BPM</label>
               <input type="number" class="form-control" id="bpmBox" name="bpm">
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-green mb-5" formmethod="post">Get Started</button>
           </form>
+        </div>
 
-        <h4>What to Select</h4>
-        <p class="p-2">Need help finding a BPM? Click the button below!</p>
-        <a href="/bpm" type="button" class="btn btn-primary btn-lg btn-green mb-5">Find my BPM</a>
+        
     </div>
   </body>
 </html>

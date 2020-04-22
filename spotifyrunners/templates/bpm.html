@@ -10,13 +10,14 @@
     <!-- custom CSS -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
   </head>
+  <div class="text-align">
   <body>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>Spotify Runners</h1>
-        <p class="p-2">This page will guide you through a quick test to find your running pace. Make sure you have your running shoes!</p>
-        <p class="p-2">To calculate your BPM, we'll have you jog around for 15 seconds. As you jog, keep track of the number of steps you take. After 15 seconds,
-            you'll enter the number of steps you took and we'll give you a BPM that matches your pace. When you're ready, click the button below to begin!
-        </p>
+       
+            <p class="p-2">To calculate your BPM, we'll have you jog around for 15 seconds. As you jog, keep track of the number of steps you take. After 15 seconds,
+                you'll enter the number of steps you took and we'll give you a BPM that matches your pace. When you're ready, click the button below to begin!
+            </p>
         
         <button id="startbutton" class="btn btn-primary btn-lg btn-green mb-5" onclick="countdown()">Start</button>
         <div id="timer"></div>
@@ -52,11 +53,13 @@
             // after STOP has been displayed, display form to get step count
             if (count == -1) {
                 document.getElementById("timer").innerHTML = `
+                    
                     <form id="stepform">
-                        <div class="form-group">
-                            <label for="stepsTaken">Steps Taken</label>
-                            <input type="number" class="form-control" id="stepsTaken" name="steps">
-                        </div>
+                            <div class="form-group">
+                                <label for="stepsTaken">Steps Taken</label>
+                                <input type="number" class="form-control" id="stepsTaken" name="steps">
+                            </div>
+                       
                     </form>
                     <button onclick="displayBPM()" class="btn btn-primary btn-lg btn-green mb-5">Find BPM</button>
                 `;
@@ -77,4 +80,5 @@
         }
     </script>
   </body>
+  </div>
 </html>
