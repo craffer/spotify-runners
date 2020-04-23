@@ -8,8 +8,11 @@ body {
 }
 
 .text-align {
-    
     text-align: center;
+}
+
+#usernameBox {
+    height: 50px;
 }
 
 .loader {
