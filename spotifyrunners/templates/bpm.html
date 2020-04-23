@@ -18,7 +18,7 @@
             <p class="p-2">To calculate your BPM, we'll have you jog around for 15 seconds. As you jog, keep track of the number of steps you take. After 15 seconds, you'll enter the number of steps you took and we'll give you a BPM that matches your pace. When you're ready, click the button below to begin!
             </p>
         
-        <button id="startbutton" class="btn btn-primary btn-lg btn-green mb-5" onclick="countdown()">Start</button>
+        <button id="startbutton" class="btn btn-success btn-lg mb-5" onclick="countdown()">Start</button>
         <div id="timer"></div>
         <div id="returnbutton"></div>
     </div>
@@ -60,7 +60,7 @@
                             </div>
                        
                     </form>
-                    <button onclick="displayBPM()" class="btn btn-primary btn-lg btn-green mb-5">Find BPM</button>
+                    <button onclick="displayBPM()" class="btn btn-success btn-lg mb-5">Find BPM</button>
                 `;
                 clearInterval(counter);
                 clearInterval(timer);
@@ -74,7 +74,7 @@
             var bpm = steps.elements[0].value * 4;
             document.getElementById("timer").innerHTML = "Based on your step count, we recommend a BPM of " + bpm + ".";
             document.getElementById("returnbutton").innerHTML = `
-                <button type="button" class="btn btn-primary btn-lg btn-green mb-5" onclick="window.location.href='/'">Back to Playlist Creation</button>
+                <button type="button" class="btn btn-success btn-lg mb-5" onclick="window.location.href='/'">Back to Playlist Creation</button>
             `;
         }
     </script>
