@@ -9,3 +9,4 @@ __pycache__/
 .cache*
 .vscode/
 *.egg-info/
+.DS_Store

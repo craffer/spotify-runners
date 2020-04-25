@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Spotify Runners</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+</head>
+
+<body>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="my-3">Spotify Runners</h1>
+        <h5>Enter your desired BPM</h5>
+        <div class="text-align">
+            <form action="/api/v1/create" method="post">
+                <div class="form-group">
+                    <input type="number" class="form-control" id="bpmBox" name="bpm" placeholder="BPM">
+                </div>
+                <div class="d-flex justify-content-center" id="button-container">
+                    <button type="submit" class="btn btn-success btn-lg mb-5" onclick="addLoader()"
+                        formmethod="post">Get Started</button>
+                </div>
+            </form>
+        </div>
+        <div class="my-2">Need help finding the right tempo?</div>
+        <a href="/bpm" type="button" class="btn btn-success btn-sm mb-5">Find my BPM</a>
+    </div>
+
+    <script>
+        function addLoader() {
+            let container = document.getElementById("button-container");
+            let loader = document.createElement("div");
+            loader.className = "loader mt-2 mx-2"
+            container.append(loader)
+        }
+    </script>
+</body>
+
+</html>

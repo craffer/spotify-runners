@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Spotify Runners</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!-- custom CSS -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-  </head>
-  <body>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+</head>
+
+<body>
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h1>Spotify Runners</h1>
-        <p class="p-2">We make it easy to play your favorite music to keep you going on your run, without distracting you or throwing you off your pace. To get started, just enter a desired BPM and click the button below, and we'll create a playlist of your favorite songs that match it.</p>
-        <form action="/api/v1/create" method="post">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Username</label>
-              <input type="text" class="form-control" id="usernameBox" name="username">
+        <h1 class="my-3">Spotify Runners</h1>
+        <div class="text-align">
+            <form action="/api/v1/login" method="post">
+                <div class="form-group mt-2">
+                    <input type="text" class="form-control" id="usernameBox" name="username"
+                        placeholder="Spotify Username">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg mb-5" formmethod="post">Log In</button>
+            </form>
+            <button data-toggle="collapse" data-target="#info" class="btn btn-md btn-success mb-5">How it Works</button>
+        </div>
+        <div class="text-align">
+            <div id="info" class="collapse">
+                <div class="px-3">Our app looks at your favorite songs from your Spotify library and analyzes each one
+                    to determine its BPM, or Beats Per Minute.
+                    <br />We then try to match that to the number of step's you take in a minute on your run. If a
+                    song's tempo matches your running pace, it won't distract you and can help you keep pushing.</div>
             </div>
-            <div class="form-group">
-              <label for="bpmBox">Desired BPM</label>
-              <input type="number" class="form-control" id="bpmBox" name="bpm">
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-green mb-5" formmethod="post">Get Started</button>
-          </form>
-
-        <h4>How it works</h4>
-        <p class="p-2">Our app looks at your favorite songs from your Spotify library and analyzes each one to determine its BPM, or Beats Per Minute. If a song's tempo matches your running pace, it won't distract you and can help you keep pushing.</p>
-
-        <h4>What to Select</h4>
-        <p class="p-2">To figure out what cadence you run at, TODO.</p>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>

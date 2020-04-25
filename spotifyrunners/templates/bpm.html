@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Spotify Runners: BPM Generator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+  </head>
+  <div class="text-align">
+  <body>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="my-3">Spotify Runners</h1>
+       
+            <p class="p-2">To calculate your BPM, we'll have you jog around for 15 seconds. As you jog, keep track of the number of steps you take. After 15 seconds, you'll enter the number of steps you took and we'll give you a BPM that matches your pace. When you're ready, click the button below to begin!
+            </p>
+        
+        <button id="startbutton" class="btn btn-success btn-lg mb-5" onclick="countdown()">Start</button>
+        <div id="timer"></div>
+        <div id="returnbutton"></div>
+    </div>
+
+    <!--Script below displays a timer in place of div element above with id="timer"-->
+    <script>
+        var count = 15;
+        // function sets interval to call timer once per second
+        function countdown() {
+            // run once per second
+            var counter=setInterval(timer, 1000);
+            // delete startbutton once clicked
+            var element = document.getElementById("startbutton");
+            element.parentNode.removeChild(element);
+            // display initial time remaining
+            document.getElementById("timer").innerHTML = "15 seconds remaining";
+        }
+        function timer() {
+            count = count - 1;
+            // correct grammar for second vs seconds
+            if (count != 1 && count > 0) {
+                document.getElementById("timer").innerHTML = count + " seconds remaining";
+            }
+            else if(count > 0) {
+                document.getElementById("timer").innerHTML = count + " second remaining";
+            }
+            // print STOP when counter hits 0
+            if (count == 0) {
+                document.getElementById("timer").innerHTML = "STOP!";
+            }
+            // after STOP has been displayed, display form to get step count
+            if (count == -1) {
+                document.getElementById("timer").innerHTML = `
+                    
+                    <form id="stepform">
+                            <div class="form-group">
+                                <label for="stepsTaken">Steps Taken</label>
+                                <input type="number" class="form-control" id="stepsTaken" name="steps">
+                            </div>
+                       
+                    </form>
+                    <button onclick="displayBPM()" class="btn btn-success btn-lg mb-5">Find BPM</button>
+                `;
+                clearInterval(counter);
+                clearInterval(timer);
+                return;
+            }
+        }
+        // function gets form data and displays calculated BPM on click as well as button
+        // to return to the "/" page
+        function displayBPM() {
+            var steps = document.getElementById("stepform");
+            var bpm = steps.elements[0].value * 4;
+            document.getElementById("timer").innerHTML = "Based on your step count, we recommend a BPM of " + bpm + ".";
+            document.getElementById("returnbutton").innerHTML = `
+                <button type="button" class="btn btn-success btn-lg mb-5" onclick="window.location.href='/'">Back to Playlist Creation</button>
+            `;
+        }
+    </script>
+  </body>
+  </div>
+</html>
